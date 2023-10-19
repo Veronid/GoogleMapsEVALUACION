@@ -1,7 +1,13 @@
 package proyecto.vero.googlemaps;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -13,6 +19,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     private GoogleMap mMap;
 
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,16 +28,28 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment=(SupportMapFragment)
                 getSupportFragmentManager().findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-    }
 
+
+    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
         mMap = googleMap;
-        LatLng sydney = new LatLng(-34,151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marcador Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //Pude resolver lo de ingresar las cordenadas, al ingresar serîa -34.151
+        LatLng Direccion1 = new LatLng(-34,151);
+        LatLng Direccion2 = new LatLng(-54,171);
+        LatLng Direccion3 = new LatLng(-84,161);
+        LatLng MiDireccion = new LatLng(-94,191);
+        mMap.addMarker(new MarkerOptions().position(Direccion1).title("Direccion 1"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Direccion1));
+        mMap.addMarker(new MarkerOptions().position(Direccion2).title("Direccion 2"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Direccion2));
+        mMap.addMarker(new MarkerOptions().position(Direccion3).title("Direccion 3"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Direccion3));
+        mMap.addMarker(new MarkerOptions().position(MiDireccion).title("Direccion 4"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(MiDireccion));
+
 
     }
 }
